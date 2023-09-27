@@ -121,8 +121,11 @@ http://ricostacruz.com/cheatsheets/umdjs.html
       }, []);
     },
     "var": function(a, b) {
-      var not_found = (b === undefined) ? null : b;
       var data = this;
+      if (typeof data === "function") {
+        return data(a, b);
+      }
+      var not_found = (b === undefined) ? null : b;
       if (typeof a === "undefined" || a==="" || a===null) {
         return data;
       }
